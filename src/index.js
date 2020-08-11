@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { FirebaseDatabaseProvider } from "@react-firebase/database";
+import { Provider } from 'react-redux';
+import {store} from './core/redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
+    <FirebaseDatabaseProvider>
     <App />
+    </FirebaseDatabaseProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

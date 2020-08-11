@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyBlUG6DEzznIyuW5_iwh-oE6zm4T4qqIg4",
     authDomain: "shoping-list-f5efb.firebaseapp.com",
     databaseURL: "https://shoping-list-f5efb.firebaseio.com",
@@ -8,4 +8,3 @@ const firebaseConfig = {
     appId: "1:531706082763:web:da57a2b3f43031ec0ab24e"
   };
 
-  export default firebaseConfig;
