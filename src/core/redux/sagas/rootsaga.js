@@ -17,7 +17,7 @@ function* updateListItem(action){
     if(!item.key){
         let key = "";
       
-        key = yield call(reduxSagaFirebase.database.create, 'shopingList', { name: item.name });
+        key = yield call(reduxSagaFirebase.database.create, 'shopingList', item);
 
         yield call(reduxSagaFirebase.database.patch,'shopingList/' + key, {key: key});
 

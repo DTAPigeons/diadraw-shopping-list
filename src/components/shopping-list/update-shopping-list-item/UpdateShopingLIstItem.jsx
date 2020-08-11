@@ -19,7 +19,7 @@ export function UpdateShopingListItem({item}){
     }, [dispatch]);
 
     const onClick = (item)=>{
-        dispatch({type: ITEM_SELECTED, payload: item});
+        dispatch({type: ITEM_SELECTED, payload: {...selectedItem, name: item.name}});
     }
 
     const onSubmit = (event) =>{
