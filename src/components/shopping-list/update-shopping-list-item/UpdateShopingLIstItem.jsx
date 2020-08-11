@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FETCH_CATALOG } from '../../../core/redux/actions/catalog-actions/action-types';
-import { ITEM_SELECTED } from '../../../core/redux/actions/update-list-item-actions/action-types';
+import { ITEM_SELECTED, UPDATE_LIST_ITEM } from '../../../core/redux/actions/update-list-item-actions/action-types';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 
@@ -12,11 +12,12 @@ export function UpdateShopingListItem({item}){
     const selectedItem = useSelector(state => state.updateListItemReducer.selectedItem);
 
     useEffect(() => {
-        dispatch({type: FETCH_CATALOG})
+        dispatch({type: FETCH_CATALOG});
+        dispatch({type: UPDATE_LIST_ITEM, payload:{ name: "Сирене" }})
     }, [dispatch]);
 
     const onClick = (item)=>{
-        dispatch({type: ITEM_SELECTED, payload: item})
+        dispatch({type: ITEM_SELECTED, payload: item});
     }
 
     const onInputChange = (event) =>{
