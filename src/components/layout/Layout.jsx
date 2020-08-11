@@ -1,7 +1,7 @@
 import React from 'react';
-import { Main } from './Main';
-import { Header } from './Header';
-import { Footer } from './Footer';
+import { Main } from './main/Main';
+import { Header } from './header/Header';
+import { Footer } from './footer/Footer';
 
 export function Layout(props){
     return(

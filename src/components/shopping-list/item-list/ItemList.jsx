@@ -9,7 +9,7 @@ const listStyles = {
 export function ItemList({items, onclick}){
     return (
         <div className="item-list-wapper" style={listStyles}>
-        { items.map(item => <ShoppingListItem item={item} onclick={onclick}/>)}
+        { items.map(item => <ShoppingListItem key={item[1].id} item={item[1]} onclick={onclick}/>)}
         </div>
     )
 }
