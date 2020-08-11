@@ -15,16 +15,22 @@ export function UpdateShopingListItem({item}){
         dispatch({type: FETCH_CATALOG})
     }, [dispatch]);
 
-    const onclick = (item)=>{
+    const onClick = (item)=>{
         dispatch({type: ITEM_SELECTED, payload: item})
+    }
+
+    const onInputChange = (event) =>{
+        event.persist();
+
+        dispatch({type: ITEM_SELECTED, payload: {...selectedItem, name: event.target.value}});
     }
 
     return(
         <>
-        <span>{selectedItem.name}</span>
+        <input type="text" name="name" id="name" className="form-control" onChange={onInputChange} value={selectedItem.name}/>
         {console.log(Object.entries(catalog))}
         <br/>
-        <ItemList items={Object.entries(catalog)} onclick={onclick}></ItemList>
+        <ItemList items={Object.entries(catalog)} onclick={onClick}></ItemList>
         </>
     )
 }
