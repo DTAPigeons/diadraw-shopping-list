@@ -44,9 +44,8 @@ export function UpdateShopingListItem({item}){
         <span>{statusMessage}</span>
         <input type="text" name="name" id="name" className="form-control" onChange={onInputChange} value={selectedItem.name}/>
         <button className="btn btn-success" onClick={onSubmit}>Save Item</button>
-        {console.log(Object.entries(catalog))}
         <br/>
-        <ItemList items={Object.entries(catalog)} onclick={onClick}></ItemList>
+        <ItemList items={catalog} onclick={onClick}></ItemList>
         </>
     )
 }

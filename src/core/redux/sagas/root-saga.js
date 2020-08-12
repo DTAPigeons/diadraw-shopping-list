@@ -3,12 +3,9 @@ import { reduxSagaFirebase } from '../../firebase/database';
 import { fetchCatalogSuccessAction } from '../actions/catalog-actions/actions';
 import { FETCH_CATALOG} from '../actions/catalog-actions/action-types';
 import { updateListItemSuccess } from '../actions/update-list-item-actions/actions';
-import { UPDATE_LIST_ITEM } from '.././actions/update-list-item-actions/action-types';
-
-function* fetchCatalogSaga(){
-    const result = yield call(reduxSagaFirebase.database.read, 'catalog');
-    yield put(fetchCatalogSuccessAction(result));
-}
+import { UPDATE_LIST_ITEM } from '../actions/update-list-item-actions/action-types';
+import { createCatalogItemCollectionFromDatabaseEntries } from '../../data/item-factory';
+import { fetchCatalogSaga} from './catalog-sagas';
 
 function* updateListItem(action){
     const item = action.payload;

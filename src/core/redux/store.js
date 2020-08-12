@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { catalogReducer } from './reducers/catalog-reducer';
 import { updateListItemReducer } from './reducers/update-list-item-reducer';
-import { rootSaga } from './sagas/rootsaga';
+import { rootSaga } from './sagas/root-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
