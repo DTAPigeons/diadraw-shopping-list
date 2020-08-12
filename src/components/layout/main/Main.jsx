@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.css';
-import { UpdateShopingListItem } from '../../shopping-list/update-shopping-list-item/UpdateShopingLIstItem';
+import { UpdateShopingListItem } from '../../shopping-items/update-shopping-list-item/UpdateShopingLIstItem';
 import {
     BrowserRouter as Router,
     Switch,

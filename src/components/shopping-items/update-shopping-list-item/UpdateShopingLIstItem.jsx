@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCatalogAction } from '../../../core/redux/actions//catalog-actions/actions';
 import { itemSelectedAction, updateListItem } from '../../../core/redux/actions/update-list-item-actions/actions';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
@@ -13,11 +12,12 @@ export function UpdateShopingListItem({item}){
     const updated = useSelector(state => state.updateListItemReducer.updated);
     const [statusMessage, setStatusMessage] = useState("");
 
+    /*
     useEffect(() => {
         dispatch(fetchCatalogAction());
         
     }, [dispatch]);
-
+*/
     const onClick = (item)=>{
         dispatch(itemSelectedAction({...selectedItem, name: item.name}));
     }

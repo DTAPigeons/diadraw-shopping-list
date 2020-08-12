@@ -1,14 +1,21 @@
-import { FETCH_CATALOG} from './action-types';
-import { FETCH_CATALOG_SUCCESS} from './action-types';
+import * as types from './action-types';
 
 
 export function fetchCatalogSuccessAction(catalog){
     return {
-        type: FETCH_CATALOG_SUCCESS,
+        type: types.FETCH_CATALOG_SUCCESS,
         payload: catalog
     }
 }
 
 export function fetchCatalogAction(){
-    return {type: FETCH_CATALOG};
+    return {type: types.FETCH_CATALOG};
+}
+
+export function syncCatalogAction() {
+    return {type: types.SYNC_CATALOG};    
+}
+
+export function syncCatalogStopAction() {
+    return {type: types.SYNC_CATALOG_STOP};
 }
