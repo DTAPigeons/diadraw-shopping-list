@@ -1,4 +1,4 @@
-import {  call, put } from 'redux-saga/effects';
+import {  call, put, fork, take, cancel } from 'redux-saga/effects';
 import { reduxSagaFirebase } from '../../firebase/database';
 import { updateListItemSuccess } from '../actions/update-list-item-actions/actions';
 import { createShoppingListCollectionFromDatabaseEntries } from '../../firebase/data/item-factory';
@@ -18,13 +18,13 @@ export function* updateListItemSaga(action){
 }
 
 export function* fetchShoppingListSaga(){
-    const result = yield call(reduxSagaFirebase.database.read, 'shoppingList');
+    const result = yield call(reduxSagaFirebase.database.read, 'shopingList');
     const shopingList = createShoppingListCollectionFromDatabaseEntries(result);
     yield put(fetchShoppingListSuccessAction(shopingList));
 }
 
 export function* syncShoppingListSaga() {
-    let task = yield fork(reduxSagaFirebase.database.sync, 'shoppingList',
+    let task = yield fork(reduxSagaFirebase.database.sync, 'shopingList',
     {
         successActionCreator: fetchShoppingListAction
     });

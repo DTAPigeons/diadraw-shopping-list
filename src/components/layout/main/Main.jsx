@@ -7,6 +7,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import { ShoppingList } from '../../shopping-items/shopping-list/ShopingList';
 
 
 
@@ -14,9 +15,12 @@ import {
       return(
           <div className="main">
           <Switch>
-              <Route path="/add">
+            <Route exact  path="/">
+                <ShoppingList/>
+            </Route>
+            <Route exact path="/add">
               <UpdateShopingListItem/>
-              </Route>
+            </Route>
           </Switch>
           </div>
       )

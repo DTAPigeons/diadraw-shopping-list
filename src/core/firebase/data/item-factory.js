@@ -9,10 +9,10 @@ export function createShoppingListCollectionFromDatabaseEntries(entries) {
 }
 
 export function createShoppingListItemFromDatabaseEntry(entry){
-    const catalogItem = createShoppingListItemFromDatabaseEntry(entry);
+    const catalogItem = createCatalogItemFromDatabaseEntry(entry);
     return {
         ...catalogItem,
-        bought: entry.bought
+        bought: entry[1].bought
     };
 }
 

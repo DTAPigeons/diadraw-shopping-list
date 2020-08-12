@@ -12,12 +12,6 @@ export function UpdateShopingListItem({item}){
     const updated = useSelector(state => state.updateListItemReducer.updated);
     const [statusMessage, setStatusMessage] = useState("");
 
-    /*
-    useEffect(() => {
-        dispatch(fetchCatalogAction());
-        
-    }, [dispatch]);
-*/
     const onClick = (item)=>{
         dispatch(itemSelectedAction({...selectedItem, name: item.name}));
     }
