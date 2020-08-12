@@ -20,3 +20,4 @@ export function* syncCatalogSaga() {
 
     yield cancel(task);
 }
+

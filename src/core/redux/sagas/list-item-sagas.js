@@ -2,7 +2,7 @@ import {  call, put, fork, take, cancel } from 'redux-saga/effects';
 import { reduxSagaFirebase } from '../../firebase/database';
 import { updateListItemSuccess } from '../actions/update-list-item-actions/actions';
 import { createShoppingListCollectionFromDatabaseEntries } from '../../firebase/data/item-factory';
-import { fetchShoppingListSuccessAction, fetchShoppingListAction } from '../actions/shopping-list-actions/actions';
+import { fetchShoppingListSuccessAction, fetchShoppingListAction, deleteShoppingListItemSuccesAction } from '../actions/shopping-list-actions/actions';
 import { SYNC_SHOPPING_LIST_STOP } from '../actions/shopping-list-actions/action-types';
 
 
@@ -15,6 +15,11 @@ export function* updateListItemSaga(action){
 
         yield put(updateListItemSuccess());
     }
+}
+
+export function* deleteShoppingItemSaga(action) {
+    yield call(reduxSagaFirebase.database.delete, 'shopingList'+'/'+action.payload.id);
+    yield put(deleteShoppingListItemSuccesAction());
 }
 
 export function* fetchShoppingListSaga(){

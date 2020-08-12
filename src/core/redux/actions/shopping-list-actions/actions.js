@@ -19,8 +19,28 @@ export function syncShoppingListAction() {
     };
 }
 
-export function syncShoppingListStopAction(params) {
+export function syncShoppingListStopAction() {
     return{
         type: types.SYNC_SHOPPING_LIST_STOP
     };
+}
+
+export function selectShoppingItemAction(item) {
+    return{
+        type: types.SELECT_SHOPPING_LIST_ITEM,
+        payload: item
+    }
+}
+
+export function  deleteShoppingListItemAction(item) {
+    return{
+        type: types.DELECT_SHOPPING_LIST_ITEM,
+        payload: item
+    }
+}
+
+export function deleteShoppingListItemSuccesAction() {
+    return{
+        type: types.DELECT_SHOPPING_LIST_ITEM_SUCCES
+    }
 }
