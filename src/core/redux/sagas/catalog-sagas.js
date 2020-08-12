@@ -1,6 +1,6 @@
 import { reduxSagaFirebase } from '../../firebase/database';
 import { fetchCatalogSuccessAction } from '../actions/catalog-actions/actions';
-import { createCatalogItemCollectionFromDatabaseEntries } from '../../data/item-factory';
+import { createCatalogItemCollectionFromDatabaseEntries } from '../../firebase/data/item-factory';
 import {  call, put } from 'redux-saga/effects';
 
 export function* fetchCatalogSaga(){
