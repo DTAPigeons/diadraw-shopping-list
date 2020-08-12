@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemSelectedAction, updateListItem } from '../../../core/redux/actions/update-list-item-actions/actions';
+import { itemSelectedAction, updateListItemAction } from '../../../core/redux/actions/update-list-item-actions/actions';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 
@@ -23,7 +23,7 @@ export function UpdateShopingListItem({item}){
             return;
         }
 
-        dispatch(updateListItem(selectedItem))
+        dispatch(updateListItemAction(selectedItem))
     }
 
     const onInputChange = (event) =>{

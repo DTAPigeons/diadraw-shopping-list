@@ -1,4 +1,4 @@
-import { FETCH_SHOPPING_LIST_SUCCESS, SELECT_SHOPPING_LIST_ITEM, DELECT_SHOPPING_LIST_ITEM_SUCCES } from '../actions/shopping-list-actions/action-types';
+import { FETCH_SHOPPING_LIST_SUCCESS, SELECT_SHOPPING_LIST_ITEM, DELECT_SHOPPING_LIST_ITEM_SUCCES, MARK_ITEM_AS_BOUGHT_SUCCESS } from '../actions/shopping-list-actions/action-types';
 
 const initialState = {
     shoppingList: [],
@@ -12,6 +12,8 @@ export function shoppingListReducer(state=initialState, action){
         case SELECT_SHOPPING_LIST_ITEM:
             return {...state, selectedItem: action.payload};
         case DELECT_SHOPPING_LIST_ITEM_SUCCES:
+            return {...state, selectedItem: undefined};
+        case MARK_ITEM_AS_BOUGHT_SUCCESS:
             return {...state, selectedItem: undefined};
         default:
             return state

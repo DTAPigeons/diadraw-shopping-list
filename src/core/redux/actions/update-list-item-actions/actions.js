@@ -7,14 +7,14 @@ export function itemSelectedAction(item){
     }
 }
 
-export function updateListItem(item){
+export function updateListItemAction(item){
     return {
         type: actionTypes.UPDATE_LIST_ITEM,
         payload: item
     }
 }
 
-export function updateListItemSuccess(){
+export function updateListItemSuccessAction(){
     return{
         type: actionTypes.UPDATE_LIST_ITEM_SUCCESS
     }

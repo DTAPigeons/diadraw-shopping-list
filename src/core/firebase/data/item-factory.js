@@ -1,5 +1,12 @@
 import { functions } from "firebase";
 
+export function createDatabaseEntryFromItem(item){
+    return{
+        name: item.name,
+        bought: item.bought
+    }
+}
+
 export function createShoppingListCollectionFromDatabaseEntries(entries) {
     const collection = [];
     Object.entries(entries).forEach(entry =>{

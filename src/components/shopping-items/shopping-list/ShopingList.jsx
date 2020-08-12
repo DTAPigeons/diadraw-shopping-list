@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { selectShoppingItemAction, deleteShoppingListItemAction } from '../../../core/redux/actions/shopping-list-actions/actions';
+import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction } from '../../../core/redux/actions/shopping-list-actions/actions';
 
 export function ShoppingList(params) {
     const dispatch = useDispatch();
@@ -19,10 +19,15 @@ export function ShoppingList(params) {
         dispatch(deleteShoppingListItemAction(selectedItem));
     }
 
+    const onMarkAsBought = ()=>{
+        dispatch(markItemAsBoughtAction(selectedItem));
+    }
+
     return(
         <>
         {selectedItem && <span> {selectedItem.name} </span>}
         {selectedItem && <button className="btn btn-success" onClick={onDelete}>Delete</button>}
+        {(selectedItem && !selectedItem.bought) && <button className="btn btn-success" onClick={onMarkAsBought}>Mark As Bought</button>}
         <Link to="/add"><button className="btn btn-success">+</button></Link>
         <h2>To buy:</h2>
         <br/>
