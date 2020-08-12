@@ -14,6 +14,7 @@ export function Header(props){
     <div className="Header" style={styles}>
     <h1> Shopping List</h1>
     </div> 
-    </>);
+    </>
+    );
     
 }

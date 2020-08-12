@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FETCH_CATALOG } from '../../../core/redux/actions/catalog-actions/action-types';
-import { ITEM_SELECTED, UPDATE_LIST_ITEM } from '../../../core/redux/actions/update-list-item-actions/action-types';
+import { fetchCatalogAction } from '../../../core/redux/actions//catalog-actions/actions';
+import { itemSelectedAction, updateListItem } from '../../../core/redux/actions/update-list-item-actions/actions';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 
@@ -14,12 +14,12 @@ export function UpdateShopingListItem({item}){
     const [statusMessage, setStatusMessage] = useState("");
 
     useEffect(() => {
-        dispatch({type: FETCH_CATALOG});
+        dispatch(fetchCatalogAction());
         
     }, [dispatch]);
 
     const onClick = (item)=>{
-        dispatch({type: ITEM_SELECTED, payload: {...selectedItem, name: item.name}});
+        dispatch(itemSelectedAction({...selectedItem, name: item.name}));
     }
 
     const onSubmit = (event) =>{
@@ -29,20 +29,15 @@ export function UpdateShopingListItem({item}){
             return;
         }
 
-        dispatch({type: UPDATE_LIST_ITEM, payload: selectedItem})
+        dispatch(updateListItem(selectedItem))
     }
 
     const onInputChange = (event) =>{
         event.persist();
 
-        dispatch({type: ITEM_SELECTED, payload: {...selectedItem, name: event.target.value}});
+        dispatch(itemSelectedAction( {...selectedItem, name: event.target.value}));
     }
 
-    const checkIfUpdated = () =>{
-        if(updated){
-            setStatusMessage("Greate Success!");
-        }
-    }
 
     return(
         <>
