@@ -2,7 +2,7 @@ import React from 'react';
 
 const styles ={
     backgroundColor: 'lightgray',
-    height: '20px',
+    height: '70px',
     width: '100%',
     position: 'fixed',
     top: 0

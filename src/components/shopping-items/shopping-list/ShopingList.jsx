@@ -4,6 +4,8 @@ import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction, clearSelectionAction } from '../../../core/redux/actions/shopping-list-actions/actions';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 export function ShoppingList(props) {
     const dispatch = useDispatch();
@@ -31,11 +33,11 @@ export function ShoppingList(props) {
 
     return(
         <>
-        {selectedItem && <span> {selectedItem.name} </span>}
-        {(selectedItem && !selectedItem.bought) && <Link to={'/add/'+selectedItem.id}><button className="btn btn-success">Edit</button></Link>}
-        {selectedItem && <button className="btn btn-success" onClick={onDelete}>Delete</button>}
-        {(selectedItem && !selectedItem.bought) && <button className="btn btn-success" onClick={onMarkAsBought}>Mark As Bought</button>}
-        <Link to="/add"><button className="btn btn-success">+</button></Link>
+        {selectedItem && <Paper component='div' variant='outlined'> {selectedItem.name}</Paper> }
+        {(selectedItem && !selectedItem.bought) && <Link to={'/add/'+selectedItem.id}><Button variant="contained" color="primary">Edit</Button></Link>}
+        {selectedItem && <Button variant="contained" color="primary" onClick={onDelete}>Delete</Button>}
+        {(selectedItem && !selectedItem.bought) && <Button variant="contained" color="primary" onClick={onMarkAsBought}>Mark As Bought</Button>}
+        <Link to="/add"><Button variant="contained" color="primary">+</Button></Link>
         <h2>To buy:</h2>
         <br/>
         {shoppingList && <ItemList items={shoppingList.filter(item=>!item.bought)} onclick={onClick}></ItemList>}

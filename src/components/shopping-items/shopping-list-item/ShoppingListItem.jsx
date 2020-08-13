@@ -1,10 +1,14 @@
 import React from 'react';
 import './ShoppingListItem.css';
+import Paper from '@material-ui/core/Paper';
 
 export function ShoppingListItem({item, onclick}){
     return(
-        <div className="list-item" onClick={()=>onclick(item)}>
+        <Paper elevation={1}>
+         <div className="list-item" onClick={()=>onclick(item)}>
             <span>{item.name}</span>
         </div>
+        </Paper>
+
     )
 }

@@ -4,6 +4,8 @@ import { itemSelectedAction, updateListItemAction, selectItemFromDataBaseAction,
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export function UpdateShopingListItem(props){
     const dispatch = useDispatch();
@@ -43,14 +45,14 @@ export function UpdateShopingListItem(props){
         dispatch(itemSelectedAction( {...selectedItem, name: event.target.value}));
     }
 
-
     return(
         <>
         {updated && <Redirect to="/"/>}
         <span>{statusMessage}</span>
-        <input type="text" name="name" id="name" className="form-control" onChange={onInputChange} value={selectedItem.name}/>
-        <button className="btn btn-success" onClick={onSubmit}>Save Item</button>
-        <Link to="/"><button className="btn btn-success">Cancel</button></Link>
+
+        <TextField type="text" name="name" id="name" onChange={onInputChange} value={selectedItem.name}/>
+        <Button variant="contained" color="primary" onClick={onSubmit}>Save Item</Button>
+        <Link to="/"><Button variant="contained" color="secondary">Cancel</Button></Link>
         <br/>
         <ItemList items={catalog} onclick={onClick}></ItemList>
         </>
