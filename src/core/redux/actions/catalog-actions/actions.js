@@ -1,7 +1,9 @@
 import * as types from './action-types';
+import { createCatalogItemCollectionFromDatabaseEntries } from '../../../firebase/data/item-factory';
 
 
-export function fetchCatalogSuccessAction(catalog){
+export function fetchCatalogSuccessAction(catalogEntier){
+    const catalog = createCatalogItemCollectionFromDatabaseEntries(catalogEntier);
     return {
         type: types.FETCH_CATALOG_SUCCESS,
         payload: catalog

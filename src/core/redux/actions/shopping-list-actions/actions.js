@@ -1,12 +1,15 @@
 import * as types from './action-types';
+import { createShoppingListCollectionFromDatabaseEntries } from '../../../firebase/data/item-factory';
 
-export function fetchShoppingListAction(){
+export function fetchShoppingListAction(dummy={}){
+    if(dummy)
     return{
         type: types.FETCH_SHOPPING_LIST
     };
 }
 
-export function fetchShoppingListSuccessAction(shoppingList){
+export function fetchShoppingListSuccessAction(shoppingListEntries){
+    const shoppingList = createShoppingListCollectionFromDatabaseEntries(shoppingListEntries);
     return{
         type: types.FETCH_SHOPPING_LIST_SUCCESS,
         payload: shoppingList

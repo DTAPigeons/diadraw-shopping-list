@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { itemSelectedAction, updateListItemAction, selectItemFromDataBaseAction, cleareUpdateItemAction } from '../../../core/redux/actions/update-list-item-actions/actions';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 
 export function UpdateShopingListItem(props){
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export function UpdateShopingListItem(props){
         return function cleanUp(){
             dispatch(cleareUpdateItemAction());
         }
-    }, [id, dispatch])
+    }, [id, selectedItem.id, dispatch])
 
     const onClick = (item)=>{
         dispatch(itemSelectedAction({...selectedItem, name: item.name}));
@@ -50,6 +50,7 @@ export function UpdateShopingListItem(props){
         <span>{statusMessage}</span>
         <input type="text" name="name" id="name" className="form-control" onChange={onInputChange} value={selectedItem.name}/>
         <button className="btn btn-success" onClick={onSubmit}>Save Item</button>
+        <Link to="/"><button className="btn btn-success">Cancel</button></Link>
         <br/>
         <ItemList items={catalog} onclick={onClick}></ItemList>
         </>

@@ -1,5 +1,3 @@
-import { functions } from "firebase";
-
 export function createDatabaseEntryFromItem(item){
     return{
         name: item.name,

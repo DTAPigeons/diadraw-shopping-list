@@ -1,4 +1,5 @@
 import * as actionTypes from './action-types';
+import { createDatabaseEntryFromItem } from '../../../firebase/data/item-factory';
 
 export function itemSelectedAction(item){
     return {
@@ -8,9 +9,13 @@ export function itemSelectedAction(item){
 }
 
 export function updateListItemAction(item){
+    const entry = createDatabaseEntryFromItem(item);
     return {
         type: actionTypes.UPDATE_LIST_ITEM,
-        payload: item
+        payload: {
+            entry,
+            id : item.id
+        }
     }
 }
 
