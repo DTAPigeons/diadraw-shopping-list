@@ -7,10 +7,7 @@ import { FirebaseDatabaseProvider } from "@react-firebase/database";
 import { Provider } from 'react-redux';
 import {store} from './core/redux/store';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router
 } from "react-router-dom";
 
 ReactDOM.render(
