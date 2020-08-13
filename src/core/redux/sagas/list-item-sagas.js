@@ -1,9 +1,10 @@
 import {  call, put, fork, take, cancel } from 'redux-saga/effects';
 import { reduxSagaFirebase } from '../../firebase/database';
-import { updateListItemSuccessAction, updateListItemAction } from '../actions/update-list-item-actions/actions';
+import { updateListItemSuccessAction, updateListItemAction, selectItemFromDataBaseSuccessAction } from '../actions/update-list-item-actions/actions';
 import { createShoppingListCollectionFromDatabaseEntries, createDatabaseEntryFromItem } from '../../firebase/data/item-factory';
 import { fetchShoppingListSuccessAction, fetchShoppingListAction, deleteShoppingListItemSuccesAction, markItemAsBoughtSuccessAction } from '../actions/shopping-list-actions/actions';
 import { SYNC_SHOPPING_LIST_STOP } from '../actions/shopping-list-actions/action-types';
+import { functions } from 'firebase';
 
 export function* markItemAsBoughtSaga(action){
     const item = action.payload;
@@ -34,6 +35,13 @@ export function* fetchShoppingListSaga(){
     const result = yield call(reduxSagaFirebase.database.read, 'shopingList');
     const shopingList = createShoppingListCollectionFromDatabaseEntries(result);
     yield put(fetchShoppingListSuccessAction(shopingList));
+}
+
+export function* fetchItemFromDataBaseSaga(action){
+    const result = yield call(reduxSagaFirebase.database.read, 'shopingList' + '/'+action.payload);
+    result.id = action.payload;
+
+    yield put(selectItemFromDataBaseSuccessAction(result));
 }
 
 export function* syncShoppingListSaga() {

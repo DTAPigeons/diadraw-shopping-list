@@ -19,3 +19,23 @@ export function updateListItemSuccessAction(){
         type: actionTypes.UPDATE_LIST_ITEM_SUCCESS
     }
 }
+
+export function selectItemFromDataBaseAction(id){
+    return{
+        type: actionTypes.SELECT_ITEM_FROM_DATA_BASE,
+        payload: id
+    }
+}
+
+export function selectItemFromDataBaseSuccessAction(item){
+    return{
+        type: actionTypes.SELECT_ITEM_FROM_DATA_BASE_SUCCESS,
+        payload: item
+    }
+}
+
+export function cleareUpdateItemAction(){
+    return{
+        type: actionTypes.CLEARE_UPDATE_ITEM
+    }
+}

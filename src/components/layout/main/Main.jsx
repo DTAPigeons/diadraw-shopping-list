@@ -21,6 +21,7 @@ import { ShoppingList } from '../../shopping-items/shopping-list/ShopingList';
             <Route exact path="/add">
               <UpdateShopingListItem/>
             </Route>
+            <Route exact path="/add/:id" children={<UpdateShopingListItem/>}/>
           </Switch>
           </div>
       )
