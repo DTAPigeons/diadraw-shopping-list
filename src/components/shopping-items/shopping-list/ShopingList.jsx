@@ -3,13 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction } from '../../../core/redux/actions/shopping-list-actions/actions';
+import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction, clearSelectionAction } from '../../../core/redux/actions/shopping-list-actions/actions';
 
 export function ShoppingList(props) {
     const dispatch = useDispatch();
 
     const shoppingList = useSelector(state=> state.shoppingListReducer.shoppingList);
     const selectedItem = useSelector(state=> state.shoppingListReducer.selectedItem);
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearSelectionAction());
+        };
+    }, [dispatch]);
 
     const onClick = (item) =>{
         dispatch(selectShoppingItemAction(item));

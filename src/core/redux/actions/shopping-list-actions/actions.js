@@ -57,3 +57,9 @@ export function markItemAsBoughtSuccessAction() {
         type: types.MARK_ITEM_AS_BOUGHT_SUCCESS
     };
 }
+
+export function clearSelectionAction(){
+    return{
+        type: types.CLEAR_SELECTION
+    }
+}
