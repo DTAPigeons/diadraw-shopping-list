@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction, clearSelectionAction } from '../../../core/redux/actions/shopping-list-actions/actions';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import { ListItem } from '../list-item/ListItem';
+import { createListItemComponent } from '../../../core/component-helpers/component-generator';
 
 export function ShoppingList(props) {
     const dispatch = useDispatch();
@@ -31,6 +33,10 @@ export function ShoppingList(props) {
         dispatch(markItemAsBoughtAction(selectedItem));
     }
 
+    const listItemChild = (item, key)=>{
+        return createListItemComponent(item, key, onClick);
+    }
+
     return(
         <>
         {selectedItem && <Paper component='div' variant='outlined'> {selectedItem.name}</Paper> }
@@ -40,10 +46,10 @@ export function ShoppingList(props) {
         <Link to="/add"><Button variant="contained" color="primary">+</Button></Link>
         <h2>To buy:</h2>
         <br/>
-        {shoppingList && <ItemList items={shoppingList.filter(item=>!item.bought)} onclick={onClick}></ItemList>}
+        {shoppingList && <ItemList items={shoppingList.filter(item=>!item.bought)} childComponent={listItemChild}></ItemList>}
         <br/>
         <h2>Bought:</h2>
-        {shoppingList && <ItemList items={shoppingList.filter(item=>item.bought)} onclick={onClick}></ItemList>}
+        {shoppingList && <ItemList items={shoppingList.filter(item=>item.bought)} childComponent={listItemChild}></ItemList>}
         </>
     )
 }

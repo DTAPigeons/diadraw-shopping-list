@@ -1,15 +1,18 @@
 import React from 'react';
-import { ShoppingListItem} from '../shopping-list-item/ShoppingListItem';
+import { ListItem} from '../list-item/ListItem';
 
 const listStyles = {
     margin: '5px',
     flexWrap: 'wrap'
 };
 
-export function ItemList({items, onclick}){
+
+export function ItemList({items, onclick, childComponent}){
+    const childItems = items.map(item => childComponent(item, item.id));
+
     return (
         <div className="item-list-wapper" style={listStyles}>
-        { items.map(item => <ShoppingListItem key={item.id} item={item} onclick={onclick}/>)}
+        { childItems}
         </div>
     )
 }

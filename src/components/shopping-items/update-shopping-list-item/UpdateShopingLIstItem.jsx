@@ -6,6 +6,7 @@ import React from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { createListItemComponent } from '../../../core/component-helpers/component-generator';
 
 export function UpdateShopingListItem(props){
     const dispatch = useDispatch();
@@ -45,6 +46,11 @@ export function UpdateShopingListItem(props){
         dispatch(itemSelectedAction( {...selectedItem, name: event.target.value}));
     }
 
+    const catalogItemChild = (item, key)=>{
+        return createListItemComponent(item, key, onClick)
+    }
+
+    
     return(
         <>
         {updated && <Redirect to="/"/>}
@@ -54,7 +60,7 @@ export function UpdateShopingListItem(props){
         <Button variant="contained" color="primary" onClick={onSubmit}>Save Item</Button>
         <Link to="/"><Button variant="contained" color="secondary">Cancel</Button></Link>
         <br/>
-        <ItemList items={catalog} onclick={onClick}></ItemList>
+        <ItemList items={catalog} childComponent={catalogItemChild}></ItemList>
         </>
     )
 }
