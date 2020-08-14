@@ -44,3 +44,9 @@ export function cleareUpdateItemAction(){
         type: actionTypes.CLEARE_UPDATE_ITEM
     }
 }
+
+export function toggleCatologAction(){
+    return{
+        type: actionTypes.TOGGLE_CATALOG
+    }
+}

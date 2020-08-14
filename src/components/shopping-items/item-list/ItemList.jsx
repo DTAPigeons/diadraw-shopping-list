@@ -7,7 +7,7 @@ const listStyles = {
 };
 
 
-export function ItemList({items, onclick, childComponent}){
+export function ItemList({items, childComponent}){
     const childItems = items.map(item => childComponent(item, item.id));
 
     return (

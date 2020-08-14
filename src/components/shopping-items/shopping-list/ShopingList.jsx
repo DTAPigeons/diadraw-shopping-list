@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction, clearSelectionAction } from '../../../core/redux/actions/shopping-list-actions/actions';
+import { selectShoppingItemAction, deleteShoppingListItemAction, markItemAsBoughtAction, clearSelectionAction, toggleEditAction } from '../../../core/redux/actions/shopping-list-actions/actions';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import { ListItem } from '../list-item/ListItem';
-import { createListItemComponent } from '../../../core/component-helpers/component-generator';
+import { createListItemComponent, creatShoppingListItemComponent } from '../../../core/component-helpers/component-generator';
+import { Grid } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 export function ShoppingList(props) {
     const dispatch = useDispatch();
@@ -21,35 +22,38 @@ export function ShoppingList(props) {
         };
     }, [dispatch]);
 
-    const onClick = (item) =>{
-        dispatch(selectShoppingItemAction(item));
-    }
-
-    const onDelete = ()=>{
-        dispatch(deleteShoppingListItemAction(selectedItem));
-    }
-
-    const onMarkAsBought = ()=>{
-        dispatch(markItemAsBoughtAction(selectedItem));
-    }
-
     const listItemChild = (item, key)=>{
-        return createListItemComponent(item, key, onClick);
+        return creatShoppingListItemComponent(item, key);
+    }
+
+    const toggleEdit = ()=>{
+        dispatch(toggleEditAction());
     }
 
     return(
         <>
-        {selectedItem && <Paper component='div' variant='outlined'> {selectedItem.name}</Paper> }
-        {(selectedItem && !selectedItem.bought) && <Link to={'/add/'+selectedItem.id}><Button variant="contained" color="primary">Edit</Button></Link>}
-        {selectedItem && <Button variant="contained" color="primary" onClick={onDelete}>Delete</Button>}
-        {(selectedItem && !selectedItem.bought) && <Button variant="contained" color="primary" onClick={onMarkAsBought}>Mark As Bought</Button>}
-        <Link to="/add"><Button variant="contained" color="primary">+</Button></Link>
-        <h2>To buy:</h2>
+        <Grid container justify='flex-end'>
+        <Grid item xs={1}><Link to="/add"><Button variant="contained" color="primary">+</Button></Link></Grid>
+        <Grid item xs={1}><Button variant="contained" color="primary" onClick={toggleEdit}>Edit</Button></Grid>
+        <Grid item xs={12}>
+        <Typography variant="h5" align="left">
+        What we need:
+        </Typography>
+        </Grid>
+        <Grid item xs={12}>
         <br/>
         {shoppingList && <ItemList items={shoppingList.filter(item=>!item.bought)} childComponent={listItemChild}></ItemList>}
         <br/>
-        <h2>Bought:</h2>
+        </Grid>
+        <Grid item xs={12}>
+        <Typography variant="h5" align="left">
+        Bought:
+        </Typography>
+        </Grid>
+        <Grid item xs={12}>
         {shoppingList && <ItemList items={shoppingList.filter(item=>item.bought)} childComponent={listItemChild}></ItemList>}
+        </Grid>
+        </Grid>
         </>
     )
 }

@@ -48,6 +48,7 @@ export function deleteShoppingListItemSuccesAction() {
     };
 }
 
+
 export function markItemAsBoughtAction(item) {
     return{
         type: types.MARK_ITEM_AS_BOUGHT,
@@ -64,5 +65,11 @@ export function markItemAsBoughtSuccessAction() {
 export function clearSelectionAction(){
     return{
         type: types.CLEAR_SELECTION
+    }
+}
+
+export function toggleEditAction(){
+    return{
+        type: types.TOGGLE_EDIT
     }
 }

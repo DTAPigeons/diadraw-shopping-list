@@ -1,8 +1,9 @@
-import { FETCH_SHOPPING_LIST_SUCCESS, SELECT_SHOPPING_LIST_ITEM, DELECT_SHOPPING_LIST_ITEM_SUCCES, MARK_ITEM_AS_BOUGHT_SUCCESS, CLEAR_SELECTION } from '../actions/shopping-list-actions/action-types';
+import { FETCH_SHOPPING_LIST_SUCCESS, SELECT_SHOPPING_LIST_ITEM, DELECT_SHOPPING_LIST_ITEM_SUCCES, MARK_ITEM_AS_BOUGHT_SUCCESS, CLEAR_SELECTION, TOGGLE_EDIT } from '../actions/shopping-list-actions/action-types';
 
 const initialState = {
     shoppingList: [],
-    selectedItem: undefined
+    selectedItem: undefined,
+    editToggled: false
 };
 
 export function shoppingListReducer(state=initialState, action){
@@ -16,7 +17,9 @@ export function shoppingListReducer(state=initialState, action){
         case MARK_ITEM_AS_BOUGHT_SUCCESS:
             return {...state, selectedItem: undefined};
         case CLEAR_SELECTION:
-            return {...state, selectedItem: undefined}
+            return {...state, selectedItem: undefined};
+        case TOGGLE_EDIT:
+            return {...state, editToggled: !state.editToggled}
         default:
             return state
     }

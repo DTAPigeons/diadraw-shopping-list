@@ -5,7 +5,8 @@ const styles ={
     height: '70px',
     width: '100%',
     position: 'fixed',
-    top: 0
+    top: 0,
+    textAlign: 'left'
 }
 
 export function Header(props){

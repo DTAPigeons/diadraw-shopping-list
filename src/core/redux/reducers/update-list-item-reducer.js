@@ -1,8 +1,9 @@
-import { ITEM_SELECTED, UPDATE_LIST_ITEM_SUCCESS, SELECT_ITEM_FROM_DATA_BASE_SUCCESS, CLEARE_UPDATE_ITEM } from '../actions/update-list-item-actions/action-types';
+import { ITEM_SELECTED, UPDATE_LIST_ITEM_SUCCESS, SELECT_ITEM_FROM_DATA_BASE_SUCCESS, CLEARE_UPDATE_ITEM, TOGGLE_CATALOG } from '../actions/update-list-item-actions/action-types';
 
 const initialState = {
     selectedItem : { name: "", bought: false},
-    updated: false
+    updated: false,
+    catalogToggled: false
 };
 
 export function updateListItemReducer(state = initialState, action){
@@ -15,6 +16,8 @@ export function updateListItemReducer(state = initialState, action){
             return {...state, selectedItem: action.payload};
         case CLEARE_UPDATE_ITEM:
             return {...initialState};
+        case TOGGLE_CATALOG:
+            return {...state, catalogToggled: !state.catalogToggled}
         default:
             return state;
     }
