@@ -28,13 +28,6 @@ export function syncShoppingListStopAction() {
     };
 }
 
-export function selectShoppingItemAction(item) {
-    return{
-        type: types.SELECT_SHOPPING_LIST_ITEM,
-        payload: item
-    };
-}
-
 export function  deleteShoppingListItemAction(item) {
     return{
         type: types.DELECT_SHOPPING_LIST_ITEM,
@@ -48,25 +41,6 @@ export function deleteShoppingListItemSuccesAction() {
     };
 }
 
-
-export function markItemAsBoughtAction(item) {
-    return{
-        type: types.MARK_ITEM_AS_BOUGHT,
-        payload: item
-    };
-}
-
-export function markItemAsBoughtSuccessAction() {
-    return{
-        type: types.MARK_ITEM_AS_BOUGHT_SUCCESS
-    };
-}
-
-export function clearSelectionAction(){
-    return{
-        type: types.CLEAR_SELECTION
-    }
-}
 
 export function toggleEditAction(){
     return{

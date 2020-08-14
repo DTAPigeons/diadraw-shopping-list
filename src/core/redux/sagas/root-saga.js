@@ -14,7 +14,6 @@ export function* rootSaga(){
         takeEvery(SELECT_ITEM_FROM_DATA_BASE, fetchItemFromDataBaseSaga),
         takeEvery(FETCH_SHOPPING_LIST, fetchShoppingListSaga),
         takeEvery(DELECT_SHOPPING_LIST_ITEM, deleteShoppingItemSaga),
-        takeEvery(MARK_ITEM_AS_BOUGHT, markItemAsBoughtSaga),
         takeLatest(SYNC_CATALOG, syncCatalogSaga),
         takeLatest(SYNC_SHOPPING_LIST, syncShoppingListSaga)
     ]);
