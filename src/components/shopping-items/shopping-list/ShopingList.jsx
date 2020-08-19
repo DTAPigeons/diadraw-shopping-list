@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ItemList } from '../item-list/ItemList';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { clearSelectionAction, toggleEditAction } from '../../../core/redux/actions/shopping-list-actions/actions';
+import { toggleEditAction } from '../../../core/redux/actions/shopping-list-actions/actions';
 import Button from '@material-ui/core/Button';
 import { creatShoppingListItemComponent } from '../../../core/component-helpers/component-generator';
 import { Grid } from '@material-ui/core';

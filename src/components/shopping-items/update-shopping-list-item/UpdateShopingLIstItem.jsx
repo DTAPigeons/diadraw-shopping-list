@@ -44,7 +44,7 @@ export function UpdateShopingListItem(props){
             return;
         }
 
-        dispatch(updateListItemAction(selectedItem))
+        dispatch(updateListItemAction(selectedItem));
     }
 
     const onInputChange = (event) =>{
