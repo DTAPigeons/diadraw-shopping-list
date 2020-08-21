@@ -6,7 +6,7 @@ export function ListItem({item, onClick}){
     return(
         <Paper elevation={1}>
          <div className="list-item" onClick={()=>onClick(item)}>
-            <span>{item.name}</span>
+            <span className="list-item-name">{item.name}</span>
         </div>
         </Paper>
 

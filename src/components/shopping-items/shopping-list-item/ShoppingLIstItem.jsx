@@ -46,7 +46,7 @@ export function ShoppingListItem({item}){
         <>
         <Grid container justify='flex-start'>
         <Grid item>
-        <Checkbox checked={item.bought} inputProps={{ 'aria-label': 'primary checkbox' }} onChange={switchBoughtStatus}/>
+        <Checkbox className="check-box" checked={item.bought} inputProps={{ 'aria-label': 'primary checkbox' }} onChange={switchBoughtStatus}/>
         </Grid>
         <Grid item>
         <ListItem item={item} onClick={(item)=>{return;}}/>

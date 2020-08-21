@@ -72,10 +72,10 @@ export function UpdateShopingListItem(props){
         </Typography>
         </Grid>
         <Grid item xs={11}>
-        <TextField fullWidth type="text" name="name" variant="filled" id="name" onChange={onInputChange} value={selectedItem.name}/>
+        <TextField fullWidth type="text" name="name" variant="filled" id="name-input" onChange={onInputChange} value={selectedItem.name}/>
         </Grid>
         <Grid item xs={2}>
-        <Button variant="contained" color="primary" onClick={onSubmit}>Save Item</Button>
+        <Button id="save-item-button" variant="contained" color="primary" onClick={onSubmit}>Save Item</Button>
         </Grid>
         <Grid item xs={2}>
         <Link to="/"><Button variant="contained" color="secondary">Cancel</Button></Link>

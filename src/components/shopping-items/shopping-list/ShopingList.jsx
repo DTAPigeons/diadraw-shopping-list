@@ -25,7 +25,7 @@ export function ShoppingList(props) {
     return(
         <>
         <Grid container justify='flex-end'>
-        <Grid item xs={1}><Link to="/add"><Button variant="contained" color="primary">+</Button></Link></Grid>
+        <Grid item xs={1}><Link to="/add"><Button  id="add-item-button" variant="contained" color="primary">+</Button></Link></Grid>
         <Grid item xs={1}><Button variant="contained" color="primary" onClick={toggleEdit}>Edit</Button></Grid>
         <Grid item xs={12}>
         <Typography variant="h5" align="left">
